@@ -1,0 +1,104 @@
+.center-blocks{
+  margin-top: 10%;
+  border: 1px solid black;
+}
+
+body{
+  background-color: #0a214f;
+}
+
+#form-container{
+  color: white !important;
+  padding:0 !important;
+    background-color: white;
+}
+
+#left-div{
+  background-color: #2aaae6;
+  padding: 45px 0;
+  height: 340px;
+}
+
+#right-div{
+
+  color: black;
+  display: inline-block;
+}
+
+.text-line {
+
+    background-color: transparent;
+    color: black;
+    outline: none;
+    outline-style: none;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: solid black 1px;
+    padding: 3px 10px;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.text-line:focus{
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6)
+}
+
+.display-none{
+  display: none;
+}
+
+#menu{
+  padding: 20px 10px;
+}
+
+#menu h3{
+    margin: 0;
+  /*margin-bottom: 50px;*/
+}
+
+.error{
+  /*margin-bottom: 10px;*/
+}
+
+:visited,
+:focus,
+:active,
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: 0
+}
+
+.btn {
+    border-radius: 3px
+}
+a.btn-success,
+a.btn-primary,
+a.btn-warning,
+a.btn-danger {
+    color: #fff
+}
+.btn-success {
+    background: #0A214F;
+    border: 1px solid #0A214F
+}
+
+.btn-success:hover {
+    color:#fff;
+    background: #00BDB5
+}
+
+.btn-cancel {
+    background: #D97300;
+    color:#fff;
+    border: 1px solid #D97300
+}
+
+.btn-cancel:hover{
+  color:#fff;
+  background:#DF0101;
+}

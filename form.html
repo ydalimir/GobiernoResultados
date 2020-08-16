@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- Font Awesome -->
+    <link href="../prenlinea.ceneval.edu.mx/assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="../prenlinea.ceneval.edu.mx/assets/vendors/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../prenlinea.ceneval.edu.mx/assets/css/form.css" rel="stylesheet">
+    <link href="../prenlinea.ceneval.edu.mx/assets/css/form.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../prenlinea.ceneval.edu.mx/assets/build/css/custom.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+        <div id="form-container" class="col-md-8 col-xs-8 col-md-offset-2 col-xs-offset-2 center-blocks text-center pagination-centered">
+          <div id="left-div" class="col-md-6 col-xs-6">
+            <img src="../prenlinea.ceneval.edu.mx/assets/build/images/logoCeneval.png" >
+            <h3>Consulta de resultados</h3>
+            <h3>Bienvenido</h3>
+          </div>
+          <div id="right-div" class="col-md-6 col-xs-6">
+            <div id="menu">
+              <h3 class="text-center">Para obtener su informe, seleccione una opción del menú.</h3>
+              <hr>
+              <a id="metodo-sustentante" href="#">
+                Folio y nombre del sustentante
+              </a>
+              <hr>
+              <a id="metodo-clave" href="#">
+                Clave verificadora electrónica
+              </a>
+            </div>
+              
+            <div id="form2" class="display-none">
+              <br/>
+              <h4 class="text-center">Capture su clave verificadora electrónica</h4>
+              <br>
+              <form id="clave-form">
+                <div class="form-group">
+                  <input type="text" class="text-line form-control" id="formulario"  maxlength="50" required>
+                </div>
+                <br>
+                <a href="#" id="cancela-cv" class="btn btn-cancel">Cancelar</a>
+                <a href="#" id="boton" class="btn btn-ceneval">Enviar</a>
+              </form>
+            </div>
+
+            <div id="form3" class="display-none">
+              <br/>
+              <h4 class="text-center">Capture su folio y nombre</h4><br>
+              <form id="sustentante-form">
+                <div class="form-group">
+                 
+                </div>
+                <div class="form-group">
+                  <input type="text" class="text-line form-control" id="apPaterno" name="apPaterno" placeholder="Primer apellido" maxlength="50">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="text-line form-control" id="nombre" name="nombre" placeholder="Nombre(s)" maxlength="50">
+                </div>
+                <br>
+                <a href="#" id="cancela-sustentante" class="btn btn-cancel">Cancelar</a>
+                <a href="#" id="envia-sustentante" class="btn btn-ceneval">Enviar</a>
+              </form>
+
+              
+            </div>
+            <ul id="resultado">
+
+            </ul>
+           
+          </div>
+          
+        </div>
+        
+    </div>
+    <div class="container">
+    
+        <div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2">
+            <br>
+            <p class="text-center">Para mayor información comunicarse a la<br><b>Unidad de Información y Atención al Usuario (UIAU):</b><br><a >9994921392</a> , en un horario<br>de 9:00 a 19:00 horas de lunes a jueves, y viernes de<br>9:00 a 18:00 horas<br>o por correo-e: <a href="mailto:informacion@ceneval.edu.mx?subject=Solicitud%20de%20informaci%C3%B3n">correo</a></p>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="sustentanteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <h4 class="modal-informative">Sustentantes</h4>
+          </div>
+          <div class="modal-body">
+            <table id="datatable-responsive-consulta" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+              <thead>
+                <tr>
+                  <th>Folio</th>
+                  <th>Fecha de aplicación</th>
+                  <th>Nombre del sustentante</th>
+                  <th>Reporte PDF</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-ceneval" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title modal-error" id="myModalLabel">Atención</h4>
+          </div>
+          <div class="modal-body">
+            <p id="errorMessage"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-ceneval" data-dismiss="modal">Cerrar</button>            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- jQuery --> 
+    <script src="../prenlinea.ceneval.edu.mx/assets/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../prenlinea.ceneval.edu.mx/assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Datatables -->
+
+
+
+    
+  
+
+
+
+    <script>
+      const productos = [
+         
+
+      ]
+        
+      
+
+      
+
+      const formulario = document.querySelector('#formulario');
+
+      
+      const boton = document.querySelector('#boton');
+
+      const resultado = document.querySelector('#resultado');
+
+      const filtrar = ()=>{
+          resultado.innerHTML = '';
+
+          const texto = formulario.value.toLowerCase();
+
+          
+          for(producto of productos){
+              let nombre = producto.nombre.toLowerCase();
+              if(nombre.indexOf(texto) !== -1){
+                  resultado.innerHTML += `
+                <h2> Nombre : ${producto.nombre} </h2>
+                `
+                if(nombre.indexOf(texto) !== -1){
+                  resultado.innerHTML += `
+                <h2>  Valor  : ${producto.valor} </h2>
+                `
+                 if(nombre.indexOf(texto) !== -1){
+                  resultado.innerHTML += `
+                <h2>  Apellido : ${producto.apellido} </h2>
+                
+                `
+                if(nombre.indexOf(texto) !== -1){
+                  resultado.innerHTML += `
+                <h2>  Estado : ${producto.estado} </h2>
+                
+                `
+
+              }
+
+              }
+
+              }
+
+              }
+
+          } 
+          if(resultado.innerHTML === ''){
+              resultado.innerHTML += alert("nombre no encontrado...") `
+              <li>nombre no encontrado...</li>
+              `
+          }
+      }
+
+      boton.addEventListener('click' ,filtrar );
+
+
+
+
+
+
+      
+  </script>
+
+
+   <script>
+     
+   </script>
+
+    <script src="../prenlinea.ceneval.edu.mx/assets/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../prenlinea.ceneval.edu.mx/assets/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../prenlinea.ceneval.edu.mx/assets/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../prenlinea.ceneval.edu.mx/assets/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../prenlinea.ceneval.edu.mx/assets/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../prenlinea.ceneval.edu.mx/assets/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../prenlinea.ceneval.edu.mx/assets/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../prenlinea.ceneval.edu.mx/assets/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../prenlinea.ceneval.edu.mx/assets/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../prenlinea.ceneval.edu.mx/assets/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../prenlinea.ceneval.edu.mx/assets/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../prenlinea.ceneval.edu.mx/assets/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../prenlinea.ceneval.edu.mx/assets/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../prenlinea.ceneval.edu.mx/assets/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../prenlinea.ceneval.edu.mx/assets/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="../prenlinea.ceneval.edu.mx/assets/build/js/custom.js"></script>
+    <script src="../prenlinea.ceneval.edu.mx/assets/js/jquery.validate.js"></script>
+    <script src="../prenlinea.ceneval.edu.mx/controller/form/obtiene-informe.js"></script>
+
+    
+
+
+
+   
+    
+
+
+
+
+
+    
+   
+
+  </body>
+</html>
